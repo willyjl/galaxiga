@@ -33,16 +33,18 @@ func (sr *SpriteRenderer) onUpdate() error {
 }
 
 func (sr *SpriteRenderer) onDraw(renderer *sdl.Renderer) error {
-	pos := sr.container.position
-	pos.x -= float64(sr.frame.s.w) / 2.0
-	pos.y -= float64(sr.frame.s.h) / 2.0
-
 	renderer.CopyEx(
 		sr.texture,
-		&sdl.Rect{X: int32(sr.frame.p.x), Y: int32(sr.frame.p.y), W: int32(sr.frame.s.w), H: int32(sr.frame.s.h)},
-		&sdl.Rect{X: int32(pos.x), Y: int32(pos.y), W: int32(sr.frame.s.w), H: int32(sr.frame.s.h)},
+		sr.container.frame.toSdlRect(),
+		&sdl.Rect{
+			X: int32(sr.container.frame.center().x),
+			Y: int32(sr.container.frame.center().y),
+			W: int32(sr.frame.s.w),
+			H: int32(sr.frame.s.h)},
 		sr.container.rotation,
-		&sdl.Point{X: int32(sr.frame.s.w) / 2, Y: int32(sr.frame.s.h) / 2},
+		&sdl.Point{
+			X: int32(sr.frame.s.w) / 2,
+			Y: int32(sr.frame.s.h) / 2},
 		sdl.FLIP_NONE)
 
 	return nil

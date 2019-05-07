@@ -26,7 +26,7 @@ func (shooter *KeyboardShooter) onDraw(renderer *sdl.Renderer) error {
 func (shooter *KeyboardShooter) onUpdate() error {
 	keys := sdl.GetKeyboardState()
 
-	pos := shooter.container.position
+	pos := shooter.container.frame.center()
 
 	if keys[sdl.SCANCODE_SPACE] == 1 {
 		if time.Since(shooter.lastShot) >= shooter.cooldown {
@@ -47,8 +47,8 @@ func (shooter *KeyboardShooter) onCollide(other *Element) error {
 func (shooter *KeyboardShooter) shoot(x, y float64) {
 	if bul, ok := BulletFromPool(); ok {
 		bul.active = true
-		bul.position.x = x
-		bul.position.y = y
+		bul.frame.p.x = x
+		bul.frame.p.y = y
 		bul.rotation = 270 * (math.Pi / 180)
 	}
 }

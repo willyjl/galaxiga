@@ -22,10 +22,10 @@ func (mover *BulletMover) onDraw(renderer *sdl.Renderer) error {
 func (mover *BulletMover) onUpdate() error {
 	c := mover.container
 
-	c.position.x += BULLET_SPEED * math.Cos(c.rotation)
-	c.position.y += BULLET_SPEED * math.Sin(c.rotation)
+	c.frame.p.x += BULLET_SPEED * math.Cos(c.rotation)
+	c.frame.p.y += BULLET_SPEED * math.Sin(c.rotation)
 
-	if c.position.x > SCREEN_WIDTH || c.position.x < 0 || c.position.y > SCREEN_HEIGHT || c.position.y < 0 {
+	if c.frame.p.x > SCREEN_WIDTH || c.frame.p.x < 0 || c.frame.p.y > SCREEN_HEIGHT || c.frame.p.y < 0 {
 		c.active = false
 	}
 

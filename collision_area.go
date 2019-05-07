@@ -1,6 +1,6 @@
 package main
 
 type CollisionArea struct {
-	center Vector
+	center Point
 	radius float64
 }

@@ -11,13 +11,15 @@ const SHOT_COOLDOWN = time.Millisecond * 250
 func CreatePlayer(renderer *sdl.Renderer) *Element {
 	player := &Element{}
 
-	player.position = Vector{x: SCREEN_WIDTH / 2.0, y: SCREEN_HEIGHT / 2.0}
+	player.frame = Rect{
+		p: Point{x: SCREEN_WIDTH / 2.0, y: SCREEN_HEIGHT / 2.0},
+		s: Size{w: 16.0, h: 16.0}}
 
 	sr := CreateSpriteRenderer(
 		player,
 		renderer,
 		"sprites/ship.png",
-		Rect{p: Vector{x: 32.0, y: 0.0}, s: Size{w: 16.0, h: 16.0}})
+		Rect{p: Point{x: 32.0, y: 0.0}, s: Size{w: 16.0, h: 16.0}})
 	player.addComponent(sr)
 
 	mover := CreateKeyboardMover(player, 0.05)

@@ -11,21 +11,6 @@ const (
 	SCREEN_HEIGHT = 800
 )
 
-type Vector struct {
-	x float64
-	y float64
-}
-
-type Size struct {
-	w float64
-	h float64
-}
-
-type Rect struct {
-	p Vector
-	s Size
-}
-
 var elements []*Element
 var bulletPool []*Element
 

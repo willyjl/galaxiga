@@ -24,25 +24,25 @@ func (mover *KeyboardMover) onDraw(renderer *sdl.Renderer) error {
 func (mover *KeyboardMover) onUpdate() error {
 	keys := sdl.GetKeyboardState()
 
-	pos := mover.container.position
+	pos := mover.container.frame.p
 
 	if keys[sdl.SCANCODE_LEFT] == 1 {
 		if pos.x-(mover.sr.frame.s.w/2.0) > 0 {
-			mover.container.position.x -= mover.speed
+			mover.container.frame.p.x -= mover.speed
 		}
 	} else if keys[sdl.SCANCODE_RIGHT] == 1 {
 		if pos.x+(mover.sr.frame.s.w/2.0) < SCREEN_WIDTH {
-			mover.container.position.x += mover.speed
+			mover.container.frame.p.x += mover.speed
 		}
 	}
 
 	if keys[sdl.SCANCODE_UP] == 1 {
 		if pos.y-(mover.sr.frame.s.h/2.0) > 0 {
-			mover.container.position.y -= mover.speed
+			mover.container.frame.p.y -= mover.speed
 		}
 	} else if keys[sdl.SCANCODE_DOWN] == 1 {
 		if pos.y+(mover.sr.frame.s.h/2.0) < SCREEN_HEIGHT {
-			mover.container.position.y += mover.speed
+			mover.container.frame.p.y += mover.speed
 		}
 	}
 

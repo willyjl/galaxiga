@@ -8,7 +8,6 @@ import (
 )
 
 type Element struct {
-	position   Vector
 	rotation   float64
 	active     bool
 	tag        string
