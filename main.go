@@ -16,7 +16,7 @@ var bulletPool []*Element
 
 func main() {
 	if err := sdl.Init(sdl.INIT_EVERYTHING); err != nil {
-		fmt.Println("initializing SDL:", err)
+		fmt.Println("failed in initializing SDL:", err)
 		return
 	}
 
@@ -39,6 +39,18 @@ func main() {
 	defer renderer.Destroy()
 
 	elements = append(elements, CreatePlayer(renderer))
+
+	for i := 0; i < 5; i++ {
+		for j := 0; j < 3; j++ {
+			point := Point{
+				x: float64(i/5)*SCREEN_WIDTH + 8.0,
+				y: float64(j)*16.0 + 8.0,
+			}
+
+			elements = append(elements, CreateFoe(renderer, point))
+		}
+	}
+
 	InitBulletPool(renderer)
 
 	for {

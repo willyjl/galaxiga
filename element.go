@@ -11,6 +11,7 @@ type Element struct {
 	rotation   float64
 	active     bool
 	tag        string
+	origin     Rect
 	frame      Rect
 	collisions []CollisionArea
 	components []Component

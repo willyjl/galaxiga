@@ -26,12 +26,12 @@ func (shooter *KeyboardShooter) onDraw(renderer *sdl.Renderer) error {
 func (shooter *KeyboardShooter) onUpdate() error {
 	keys := sdl.GetKeyboardState()
 
-	pos := shooter.container.frame.center()
+	pos := shooter.container.frame.p
 
 	if keys[sdl.SCANCODE_SPACE] == 1 {
 		if time.Since(shooter.lastShot) >= shooter.cooldown {
-			shooter.shoot(pos.x+6, pos.y-4)
-			shooter.shoot(pos.x-6, pos.y-4)
+			shooter.shoot(pos.x+6, pos.y-2)
+			shooter.shoot(pos.x-6, pos.y-2)
 
 			shooter.lastShot = time.Now()
 		}

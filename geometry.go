@@ -9,6 +9,12 @@ type Point struct {
 	y float64
 }
 
+func (point Point) toSdlPoint() *sdl.Point {
+	return &sdl.Point{
+		X: int32(point.x),
+		Y: int32(point.y)}
+}
+
 type Size struct {
 	w float64
 	h float64
